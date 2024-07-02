@@ -13,17 +13,22 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private int phone;
+
+    //relation with turn
 
     //Constructor
     public User(){
 
     }
-    public User(String username, String password, String email) {
+
+    public User(Long id, String username, String password, String email, int phone) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.phone = phone;
     }
-
     //Getter and setter
 
     public Long getId() {
@@ -58,6 +63,14 @@ public class User {
         this.email = email;
     }
 
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
     //Equals and Hashcode
 
     @Override
@@ -72,4 +85,5 @@ public class User {
     public int hashCode() {
         return Objects.hash(id, username, email);
     }
+
 }
