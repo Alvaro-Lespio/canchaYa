@@ -1,7 +1,10 @@
 package com.alvaro.savingmoney.canchaya.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
 
 import java.util.Objects;
 
@@ -9,21 +12,34 @@ import java.util.Objects;
 public class User {
     //Attribute
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty(message = "the user can't be null also the user must contains between 4 and 20 characters")
+    @Size(min = 4, max = 20)
     private String username;
+
+    @NotEmpty(message = "the password can't be null")
     private String password;
+
+    @NotEmpty(message = "the email can't be null")
+    @Email(message = "must contains the symbol @")
     private String email;
+
+    @NotNull(message = "the phone can't be null")
     private int phone;
 
-    //relation with turn
+    //relation with reservation
 
     //Constructor
     public User(){
-
+        this.username = "";
+        this.password = "";
+        this.email = "";
+        this.phone = 0;
     }
 
-    public User(Long id, String username, String password, String email, int phone) {
-        this.id = id;
+    public User(String username, String password, String email, int phone) {
         this.username = username;
         this.password = password;
         this.email = email;
