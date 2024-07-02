@@ -13,7 +13,7 @@ public class Reservation {
     private Long id;
     private Date date;
     //relation with field and user
-    
+
     //Constructor
     public Reservation() {
     }
