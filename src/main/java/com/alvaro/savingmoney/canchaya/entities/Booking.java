@@ -1,24 +1,31 @@
 package com.alvaro.savingmoney.canchaya.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Reservation {
+public class Booking {
     //Attributes
     @Id
     private Long id;
     private Date date;
-    //relation with field and user
+
+    //relation with user
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    //relation with booking field
 
     //Constructor
-    public Reservation() {
+    public Booking() {
+        this.date = new Date();
+
     }
 
-    public Reservation(Long id, Date date) {
+    public Booking(Long id, Date date) {
         this.id = id;
         this.date = date;
     }
@@ -39,7 +46,7 @@ public class Reservation {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        Reservation that = (Reservation) object;
+        Booking that = (Booking) object;
         return Objects.equals(id, that.id);
     }
 

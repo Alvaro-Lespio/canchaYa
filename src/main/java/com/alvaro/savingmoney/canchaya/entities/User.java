@@ -1,12 +1,11 @@
 package com.alvaro.savingmoney.canchaya.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -29,7 +28,9 @@ public class User {
     @NotNull(message = "the phone can't be null")
     private int phone;
 
-    //relation with reservation
+    //relation with booking
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private Set<Booking> bookings;
 
     //Constructor
     public User(){
@@ -37,6 +38,7 @@ public class User {
         this.password = "";
         this.email = "";
         this.phone = 0;
+        this.bookings = new HashSet<>();
     }
 
     public User(String username, String password, String email, int phone) {
