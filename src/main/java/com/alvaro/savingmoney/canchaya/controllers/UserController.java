@@ -30,7 +30,11 @@ public class UserController {
         return new ResponseEntity<>(userService.deleteUser(id),HttpStatus.OK);
     }
     //Update user
-    
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateUser(@Valid @RequestBody User user,@PathVariable Long id){
+        return new ResponseEntity<>(userService.updateUser(user,id),HttpStatus.OK);
+    }
+
     //List users
 
 
