@@ -4,5 +4,5 @@ import com.alvaro.savingmoney.canchaya.entities.User;
 
 public interface IUserService {
     String createUser(User user);
-
+    String deleteUser(Long id);
 }
