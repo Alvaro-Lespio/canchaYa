@@ -17,8 +17,13 @@ public class UserServiceImpl implements IUserService {
     }
     //Create User
     @Override
-    public User createUser(User user) {
+    public String createUser(User user) {
         userRepository.save(user);
-        return user;
+        return "the user can be create successfully";
     }
+    //Delete user
+
+    //Update user
+
+    //List users
 }

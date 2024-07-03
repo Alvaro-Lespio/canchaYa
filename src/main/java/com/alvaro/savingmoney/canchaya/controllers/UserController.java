@@ -24,7 +24,7 @@ public class UserController {
 
     //Create user
     @PostMapping
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user){
+    public ResponseEntity<String> createUser(@Valid @RequestBody User user){
         return new ResponseEntity<>(userService.createUser(user),HttpStatus.CREATED);
     }
     //Delete user
