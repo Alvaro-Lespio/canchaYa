@@ -1,7 +1,6 @@
 package com.alvaro.savingmoney.canchaya.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -9,10 +8,15 @@ import java.util.Objects;
 public class Field {
     //Attributes
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int maxPlayers;
     private boolean available;
     private double price;
+
+    //relation with booking
+    @OneToOne(mappedBy = "field")
+    private Booking booking;
 
     //Constructors
 

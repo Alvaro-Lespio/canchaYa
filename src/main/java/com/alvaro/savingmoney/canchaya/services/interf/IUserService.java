@@ -3,5 +3,7 @@ package com.alvaro.savingmoney.canchaya.services.interf;
 import com.alvaro.savingmoney.canchaya.entities.User;
 
 public interface IUserService {
-    User createUser(User user);
+    String createUser(User user);
+    String deleteUser(Long id);
+    String updateUser(User user, Long id);
 }
