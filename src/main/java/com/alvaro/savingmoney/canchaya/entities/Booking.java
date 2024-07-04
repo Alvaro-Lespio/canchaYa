@@ -9,6 +9,7 @@ import java.util.Objects;
 public class Booking {
     //Attributes
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date;
 
@@ -20,9 +21,18 @@ public class Booking {
     //relation with booking field
     @OneToOne
     @JoinColumn(name = "bookingfield_id")
+    private BookingField bookingField;
+
+    //relation with field
+    @OneToOne
+    @JoinColumn(name = "field_id")
+    private Field field;
 
     //relation with invoice
-    private BookingField bookingField;
+    @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
+    private Invoice invoice;
+
+
     //Constructor
     public Booking() {
         this.date = new Date();

@@ -1,8 +1,6 @@
 package com.alvaro.savingmoney.canchaya.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -11,13 +9,20 @@ import java.util.Objects;
 public class BookingField {
     //Attributes
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime start;
     private LocalDateTime end;
 
     //Relation with Booking
-    @OneToOne(mappedBy = "bookingfield")
+    @OneToOne(mappedBy = "bookingField")
     private Booking booking;
+
+    //relation with field
+    @OneToOne
+    @JoinColumn(name = "field_id")
+    private Field field;
+
 
     //Constructor
     public BookingField() {
