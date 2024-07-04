@@ -18,7 +18,11 @@ public class Booking {
     private User user;
 
     //relation with booking field
+    @OneToOne
+    @JoinColumn(name = "bookingfield_id")
 
+    //relation with invoice
+    private BookingField bookingField;
     //Constructor
     public Booking() {
         this.date = new Date();
